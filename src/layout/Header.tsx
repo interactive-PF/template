@@ -1,7 +1,6 @@
-// import { useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import styled from 'styled-components';
-// import { type RecordModel } from 'pocketbase';
-// import pb from '../api/pocketBase';
+import pb from '@/api/pocketBase';
 
 const Head = styled.nav`
   display: flex;
@@ -36,31 +35,30 @@ const Menu = styled.button`
   padding: 10px 30px;
 `;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-// async function fetchTitle(): Promise<RecordModel[]> {
-//   const response = await pb.collection('SM').getFullList();
+async function fetchTitle() {
+  const response = await pb.collection('SM').getFullList();
 
-//   return response;
-// }
+  return response;
+}
 
-export default function Header(): JSX.Element {
-  //   const { data } = useQuery({
-  //     queryKey: ['products'],
-  //     queryFn: fetchTitle,
-  //   });
+export default function Header() {
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['products'],
+    queryFn: fetchTitle,
+  });
 
-  // if (isLoading) {
-  // 	return <div>로딩중</div>;
-  // }
+  if (isLoading) {
+    return <div>로딩중</div>;
+  }
 
-  // if (isError) {
-  // 	return <div>Error</div>;
-  // }
+  if (isError) {
+    return <div>Error</div>;
+  }
 
   return (
     <Head>
       <TitleWrapper>
-        <Title></Title>
+        <Title>{data[0].name}</Title>
       </TitleWrapper>
       <MenuWrapper>
         <Menu>첫번째</Menu>

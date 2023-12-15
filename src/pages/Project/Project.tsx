@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import mainImage1 from '@/assets/images/main_banner_1.webp';
+import mainImage2 from '@/assets/images/main_banner_2.webp';
 import {
   ButtonReset,
   MainLeft,
@@ -6,9 +7,8 @@ import {
   Section,
   UnderLineLong,
 } from '@/styles/common.tsx';
-import mainImage1 from '@/assets/images/main_banner_1.webp';
-import mainImage2 from '@/assets/images/main_banner_2.webp';
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import styled from 'styled-components';
 
 const mainImageList = [mainImage1, mainImage2];
 
@@ -83,7 +83,7 @@ const H3 = styled.h3`
   height: 400px;
 `;
 
-export default function Project(): JSX.Element {
+export default function Project() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -121,7 +121,11 @@ export default function Project(): JSX.Element {
               </ToolLi>
             </ToolUl>
             <ThumbnailContainer>
-              <ThumbnailBox onClick={() => setIsModalOpen(true)}>
+              <ThumbnailBox
+                onClick={() => {
+                  setIsModalOpen(true);
+                }}
+              >
                 <ThumbnailImage src={mainImageList[0]} />
               </ThumbnailBox>
               <ThumbnailBox>
