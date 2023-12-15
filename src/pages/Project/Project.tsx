@@ -95,8 +95,8 @@ export default function Project(): JSX.Element {
     }
   }, [isModalOpen]);
 
-  const handleBackdropClick = (event: React.MouseEvent<HTMLDialogElement>) => {
-    if (event.target === dialogRef.current) {
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDialogElement>) => {
+    if (e.target === dialogRef.current) {
       setIsModalOpen(false);
     }
   };
