@@ -36,14 +36,13 @@ const Menu = styled.button`
   padding: 10px 30px;
 `;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 // async function fetchTitle(): Promise<RecordModel[]> {
 //   const response = await pb.collection('SM').getFullList();
 
 //   return response;
 // }
 
-export default function Header(): JSX.Element {
+export default function Header() {
   //   const { data } = useQuery({
   //     queryKey: ['products'],
   //     queryFn: fetchTitle,
@@ -60,7 +59,7 @@ export default function Header(): JSX.Element {
   return (
     <Head>
       <TitleWrapper>
-        <Title></Title>
+        <Title />
       </TitleWrapper>
       <MenuWrapper>
         <Menu>첫번째</Menu>

@@ -30,7 +30,7 @@ const DarkMode = styled.button`
   background: blue;
 `;
 
-export default function Footer(): JSX.Element {
+export default function Footer() {
   return (
     <FooterContainer>
       <FooterWarpper>
