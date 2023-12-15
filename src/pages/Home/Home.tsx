@@ -35,10 +35,10 @@ const ProjectLink = styled.a`
   color: #73716e;
 `;
 
-export default function Home(): JSX.Element {
+export default function Home() {
   return (
     <Section>
-      <MainLeft></MainLeft>
+      <MainLeft />
       <MainRight>
         <HomeContainer>
           <HomeBox>
