@@ -1,6 +1,7 @@
-import { useQuery } from '@tanstack/react-query';
-import styled from 'styled-components';
 import pb from '@/api/pocketBase';
+import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Head = styled.nav`
   display: flex;
@@ -14,8 +15,6 @@ const Head = styled.nav`
   align-items: center;
 `;
 
-const TitleWrapper = styled.div``;
-
 const Title = styled.a`
   font-size: 2rem;
 `;
@@ -27,7 +26,7 @@ const MenuWrapper = styled.div`
   min-width: 333px;
 `;
 
-const Menu = styled.button`
+const Menu = styled.a`
   font-size: 1.5rem;
   min-width: 90px;
   background-color: yellow;
@@ -37,30 +36,17 @@ const Menu = styled.button`
 
 async function fetchTitle() {
   const response = await pb.collection('SM').getFullList();
-
   return response;
 }
 
 export default function Header() {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ['products'],
-    queryFn: fetchTitle,
-  });
-
-  if (isLoading) {
-    return <div>로딩중</div>;
-  }
-
-  if (isError) {
-    return <div>Error</div>;
-  }
-
   return (
     <Head>
-      <TitleWrapper>
-        <Title>{data[0].name}</Title>
-      </TitleWrapper>
+      <TitleWrapper />
       <MenuWrapper>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/project">Project</Link>
         <Menu>첫번째</Menu>
         <Menu>두번째</Menu>
         <Menu>세번째</Menu>
@@ -68,4 +54,21 @@ export default function Header() {
       </MenuWrapper>
     </Head>
   );
+}
+
+function TitleWrapper() {
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['products'],
+    queryFn: fetchTitle,
+  });
+
+  if (isLoading) {
+    return <Title>내가 누구게...</Title>;
+  }
+
+  if (isError) {
+    return <Title>에러발생에러발생~~~</Title>;
+  }
+
+  return <Title>{data[0].name}</Title>;
 }
