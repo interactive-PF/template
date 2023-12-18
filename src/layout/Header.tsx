@@ -1,6 +1,7 @@
 import pb from '@/api/pocketBase';
 import { useQuery } from '@tanstack/react-query';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Head = styled.nav`
@@ -15,23 +16,39 @@ const Head = styled.nav`
   align-items: center;
 `;
 
-const Title = styled.a`
+const Title = styled.h1`
   font-size: 2rem;
 `;
 
-const MenuWrapper = styled.div`
+const MenuWrapper = styled.ul`
   display: flex;
   justify-content: space-between;
   align-items: center;
   min-width: 333px;
 `;
 
-const Menu = styled.a`
+const MenuMiddleWrapper = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Menu = styled(Link)`
   font-size: 1.5rem;
   min-width: 90px;
-  background-color: yellow;
+  background-color: white;
   margin: 0 15px;
   padding: 10px 30px;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+
+  &:hover {
+    background-color: skyblue;
+    color: white;
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+  }
 `;
 
 async function fetchTitle() {
@@ -44,17 +61,56 @@ export default function Header() {
     <Head>
       <TitleWrapper />
       <MenuWrapper>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/project">Project</Link>
-        <Menu>첫번째</Menu>
-        <Menu>두번째</Menu>
-        <Menu>세번째</Menu>
-        <Menu>네번째</Menu>
+        <MenuMiddleWrapper>
+          <Menu href="/">Home</Menu>
+        </MenuMiddleWrapper>
+        <MenuMiddleWrapper>
+          <Menu href="/about">About</Menu>
+        </MenuMiddleWrapper>
+        <MenuMiddleWrapper>
+          <Menu href="/project">Project</Menu>
+        </MenuMiddleWrapper>
+        <MenuMiddleWrapper>
+          <Menu href="/">Board</Menu>
+        </MenuMiddleWrapper>
       </MenuWrapper>
     </Head>
   );
 }
+
+function Link({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <NavStyle
+      to={href}
+      className={({ isActive }) => (isActive ? 'active' : '')}
+    >
+      {children}
+    </NavStyle>
+  );
+}
+
+const NavStyle = styled(NavLink)`
+  color: white;
+  padding: 20px;
+  font-size: 20px;
+  font-weight: 400;
+  margin: 5px;
+  outline: invert;
+  &:link {
+    transition: 0.5s;
+    text-decoration: none;
+  }
+  &:hover {
+    color: aquamarine;
+    scale: 1.5;
+  }
+  &.active {
+    color: black;
+    position: relative;
+    top: 2px;
+    scale: 0.5;
+  }
+`;
 
 function TitleWrapper() {
   const { data, isLoading, isError } = useQuery({
