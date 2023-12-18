@@ -56,20 +56,21 @@ const ThumbnailImage = styled.img`
   height: 100%;
   object-fit: cover;
 `;
-
 const DialogContainer = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
   scrollbar-width: none;
 `;
-
 const Dialog = styled.dialog`
+  position: relative;
+  outline: none;
+
   &::backdrop {
     background: #565656aa;
   }
   width: 800px;
-  height: 200px;
+  /* height: calc(100vh - 140px); */
 
   background-color: rgb(255, 255, 255);
   color: rgb(51, 51, 51);
@@ -79,8 +80,17 @@ const Dialog = styled.dialog`
   padding: 1.25rem;
 `;
 
-const H3 = styled.h3`
-  height: 400px;
+const ProjectTitle = styled.h3`
+  font-size: 1.75rem;
+  margin-bottom: 10px;
+`;
+
+const ProjectOverview = styled.p`
+  margin-bottom: 10px;
+`;
+
+const DialogCloseButton = styled.button`
+  position: absolute;
 `;
 
 export default function Project() {
@@ -141,7 +151,10 @@ export default function Project() {
       </Section>
       <DialogContainer>
         <Dialog ref={dialogRef} onClick={handleBackdropClick}>
-          <H3>test</H3>
+          <ProjectTitle>MConcept</ProjectTitle>
+          <ProjectOverview>MConcept ProjectOverview</ProjectOverview>
+          <UnderLineLong></UnderLineLong>
+          <DialogCloseButton>X</DialogCloseButton>
         </Dialog>
       </DialogContainer>
     </>
