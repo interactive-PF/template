@@ -7,7 +7,7 @@ import {
   Section,
   UnderLineLong,
 } from '@/styles/common.tsx';
-import React, { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import styled from 'styled-components';
 
 const mainImageList = [mainImage1, mainImage2];
@@ -63,15 +63,16 @@ const DialogContainer = styled.div`
   scrollbar-width: none;
 `;
 const Dialog = styled.dialog`
-  position: relative;
   outline: none;
-
   &::backdrop {
     background: #565656aa;
   }
-  width: 800px;
-  /* height: calc(100vh - 140px); */
+  padding: 0;
+`;
 
+const DialogInner = styled.div`
+  width: 800px;
+  height: calc(100vh - 140px);
   background-color: rgb(255, 255, 255);
   color: rgb(51, 51, 51);
   box-shadow:
@@ -82,32 +83,29 @@ const Dialog = styled.dialog`
 
 const ProjectTitle = styled.h3`
   font-size: 1.75rem;
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
 `;
 
 const ProjectOverview = styled.p`
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 `;
 
-const DialogCloseButton = styled.button`
-  position: absolute;
-`;
+const DialogCloseButton = styled.button``;
 
 export default function Project() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  useEffect(() => {
-    if (isModalOpen) {
-      dialogRef.current?.showModal();
-    } else if (dialogRef.current?.open) {
-      dialogRef.current?.close();
-    }
-  }, [isModalOpen]);
+  const openDialog = () => {
+    dialogRef.current?.showModal();
+  };
 
-  const handleBackdropClick = (e: React.MouseEvent<HTMLDialogElement>) => {
+  const closeDialog = () => {
+    dialogRef.current?.close();
+  };
+
+  const handleBackdropClick = (e: any) => {
     if (e.target === dialogRef.current) {
-      setIsModalOpen(false);
+      closeDialog();
     }
   };
 
@@ -131,11 +129,7 @@ export default function Project() {
               </ToolLi>
             </ToolUl>
             <ThumbnailContainer>
-              <ThumbnailBox
-                onClick={() => {
-                  setIsModalOpen(true);
-                }}
-              >
+              <ThumbnailBox onClick={openDialog}>
                 <ThumbnailImage src={mainImageList[0]} />
               </ThumbnailBox>
               <ThumbnailBox>
@@ -151,10 +145,19 @@ export default function Project() {
       </Section>
       <DialogContainer>
         <Dialog ref={dialogRef} onClick={handleBackdropClick}>
-          <ProjectTitle>MConcept</ProjectTitle>
-          <ProjectOverview>MConcept ProjectOverview</ProjectOverview>
-          <UnderLineLong></UnderLineLong>
-          <DialogCloseButton>X</DialogCloseButton>
+          <DialogInner>
+            <ProjectTitle>MConcept</ProjectTitle>
+            <ProjectOverview>MConcept ProjectOverview</ProjectOverview>
+            <UnderLineLong></UnderLineLong>
+            <DialogCloseButton
+              onClick={(e) => {
+                e.preventDefault();
+                closeDialog();
+              }}
+            >
+              X
+            </DialogCloseButton>
+          </DialogInner>
         </Dialog>
       </DialogContainer>
     </>
