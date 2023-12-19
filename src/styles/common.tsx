@@ -49,7 +49,8 @@ export const ButtonReset = styled.button`
 /**
  *툴 태그 기본형 color만 추가해서 쓰면됨
  */
-export const ToolTag = styled.button`
+export const ToolTag = styled.span`
+  display: inline-block;
   font-size: 14px;
   font-weight: 600;
   border: none;
@@ -57,6 +58,7 @@ export const ToolTag = styled.button`
   border-radius: 4px;
   padding: 3px 6px;
   margin-right: 4px;
+  margin-bottom: 4px;
 `;
 
 export const HtmlTag = styled(ToolTag)`
