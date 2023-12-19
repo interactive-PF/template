@@ -7,7 +7,7 @@ const Head = styled.header`
   justify-content: space-between;
   box-sizing: border-box;
   padding: 10px 3% 0 3%;
-  background-color: skyblue;
+  background-color: white;
   width: 100%;
   position: fixed;
   height: 70px;
