@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import Menu from './Menu';
 
@@ -8,7 +9,7 @@ const MenuWrapper = styled.ul`
   min-width: 333px;
 `;
 
-const MenuMiddleWrapper = styled.li`
+const MenuMiddleWrapper = styled(motion.li)`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,9 +26,14 @@ function MenuCategory() {
   return (
     <nav>
       <MenuWrapper>
-        {category.map((item) => {
+        {category.map((item, index) => {
           return (
-            <MenuMiddleWrapper key={item.name}>
+            <MenuMiddleWrapper
+              key={item.name}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.3 }}
+            >
               <Menu href={item.href}>{item.name}</Menu>
             </MenuMiddleWrapper>
           );
