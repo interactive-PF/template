@@ -3,11 +3,11 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const NavStyle = styled(NavLink)`
-  color: black;
-  padding: 12px 30px;
-  font-size: 1.5rem;
+  color: #191919;
+  padding: 12px 20px;
+  font-size: 1.2rem;
   font-weight: 400;
-  margin: 0 30px;
+  margin: 0 15px;
   background-color: transparent;
   font-weight: 500;
   position: relative;
@@ -19,14 +19,14 @@ const NavStyle = styled(NavLink)`
   }
 
   &:hover {
-    /* background-color: black; */
+    /* background-color: #191919; */
     color: white;
     scale: 1.03;
     transition: 0.5s;
   }
 
   &:active {
-    background-color: black;
+    background-color: #191919;
     scale: 0.8;
     color: white;
     transition: background-color 0.3s ease;
@@ -34,7 +34,7 @@ const NavStyle = styled(NavLink)`
   }
 
   &.active {
-    background-color: black;
+    background-color: #191919;
     color: white;
     transition: 0.5s;
     border-radius: 5px;
@@ -50,7 +50,7 @@ const NavStyle = styled(NavLink)`
     content: '';
     z-index: -1;
     transition: all 1s ease;
-    background-color: black;
+    background-color: #191919;
     border-radius: 5px;
   }
 
