@@ -83,19 +83,16 @@ const DialogContainer = styled.div``;
 
 const Dialog = styled.dialog`
   position: relative;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  scrollbar-width: none;
   outline: none;
   &::backdrop {
     background: #565656aa;
   }
   padding: 0;
+  border: 1px solid #707070;
 `;
 
 const DialogInner = styled.div`
-  width: 800px;
+  width: 900px;
   height: calc(100vh - 80px);
   background-color: rgb(255, 255, 255);
   color: rgb(51, 51, 51);
@@ -109,22 +106,27 @@ const DialogInnerContainer = styled.div`
   display: flex;
 `;
 const DialogLeftSecion = styled.div`
-  width: 35%;
-  margin-right: 20px;
+  width: 25%;
+  margin-right: 40px;
   box-sizing: border-box;
 `;
-const DialogRightSecion = styled.div`
+const DialogRightSection = styled.div.attrs((props) => ({
+  className: 'test',
+}))`
   width: 65%;
 `;
 const ProjectTitle = styled.h3`
   font-size: 1.75rem;
   margin-bottom: 10px;
-  font-weight: 800;
+  /* font-weight: 800; */
 `;
 
 const ProjectSubtitle = styled.p`
   margin-bottom: 10px;
   font-weight: 800;
+  .test &:nth-child(n + 2) {
+    margin-top: 40px;
+  }
 `;
 
 const ProjectContent = styled.div`
@@ -283,7 +285,7 @@ export default function Project() {
                   <ReactTag>React</ReactTag>
                 </ProjectContent>
               </DialogLeftSecion>
-              <DialogRightSecion>
+              <DialogRightSection>
                 <ProjectSubtitle>🧑🏻‍💻 담당작업</ProjectSubtitle>
                 <ProjectContent>
                   <ProjectOl>
@@ -317,7 +319,40 @@ export default function Project() {
                     </ProjectLi>
                   </ProjectOl>
                 </ProjectContent>
-              </DialogRightSecion>
+                <ProjectSubtitle>🧑🏻‍💻 담당작업</ProjectSubtitle>
+                <ProjectContent>
+                  <ProjectOl>
+                    <ProjectLi>
+                      <ProjectLiTitle>1. 회원가입 페이지</ProjectLiTitle>
+                      <ProjectLiSubtitle>• 계정기능구현</ProjectLiSubtitle>
+                      <ProjectText>
+                        REST API활용하여 계정생성 기능 구현
+                      </ProjectText>
+                      <ProjectLiTitle>2. 로그인 페이지</ProjectLiTitle>
+                      <ProjectLiSubtitle>
+                        • 아이디, 비밀번호 인증 기능
+                      </ProjectLiSubtitle>
+                      <ProjectText>
+                        인증기능 (Auth Provider)으로 서버에서 아이디, 비밀번호를
+                        읽어 인증기능 구현
+                      </ProjectText>
+                      <ProjectLiTitle>3. 헤더</ProjectLiTitle>
+                      <ProjectLiSubtitle>
+                        • 카테고리 네비게이션
+                      </ProjectLiSubtitle>
+                      <ProjectText>
+                        List Rendering으로 코드를 재사용하여 네비게이션 UI 생성
+                      </ProjectText>
+                      <ProjectLiTitle>4. 폴더, 파일 컨벤션 작성</ProjectLiTitle>
+                      <ProjectLiSubtitle>• 컨벤션</ProjectLiSubtitle>
+                      <ProjectText>
+                        컨벤션을 작성해서 팀원과 폴더구조, 파일이름을 일관되게
+                        관리 할 수 있게 함
+                      </ProjectText>
+                    </ProjectLi>
+                  </ProjectOl>
+                </ProjectContent>
+              </DialogRightSection>
             </DialogInnerContainer>
           </DialogInner>
         </Dialog>
