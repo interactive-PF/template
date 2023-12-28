@@ -110,7 +110,7 @@ const DialogLeftSecion = styled.div`
   margin-right: 40px;
   box-sizing: border-box;
 `;
-const DialogRightSection = styled.div.attrs((props) => ({
+const DialogRightSection = styled.div.attrs(() => ({
   className: 'test',
 }))`
   width: 65%;
