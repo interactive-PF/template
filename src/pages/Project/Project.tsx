@@ -75,6 +75,93 @@ const ThumbnailMemoText = styled.p`
   line-height: 20px;
 `;
 
+<<<<<<< HEAD
+const DialogContainer = styled.div``;
+
+const Dialog = styled.dialog`
+  position: relative;
+  outline: none;
+  &::backdrop {
+    background: #565656aa;
+  }
+  padding: 0;
+  border: 1px solid #707070;
+`;
+
+const DialogInner = styled.div`
+  width: 900px;
+  height: calc(100vh - 80px);
+  background-color: rgb(255, 255, 255);
+  color: rgb(51, 51, 51);
+  box-shadow:
+    rgba(255, 255, 255, 0.1) 0px 2px 3px,
+    rgba(255, 255, 255, 0.06) 0px 10px 20px;
+  padding: 2.2rem;
+  box-sizing: border-box;
+`;
+const DialogInnerContainer = styled.div`
+  display: flex;
+`;
+const DialogLeftSecion = styled.div`
+  width: 25%;
+  margin-right: 40px;
+  box-sizing: border-box;
+`;
+const DialogRightSection = styled.div.attrs(() => ({
+  className: 'test',
+}))`
+  width: 65%;
+`;
+const ProjectTitle = styled.h3`
+  font-size: 1.75rem;
+  margin-bottom: 10px;
+  /* font-weight: 800; */
+`;
+
+const ProjectSubtitle = styled.p`
+  margin-bottom: 10px;
+  font-weight: 800;
+  .test &:nth-child(n + 2) {
+    margin-top: 40px;
+  }
+`;
+
+const ProjectContent = styled.div`
+  padding-left: 20px;
+  margin-bottom: 20px;
+`;
+
+const ProjectLink = styled.a`
+  &:visited,
+  &:active {
+    color: #565656aa;
+    text-decoration: none;
+  }
+`;
+const ProjectOl = styled.ol``;
+
+const ProjectLi = styled.li``;
+
+const ProjectLiTitle = styled.p`
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-decoration: underline;
+`;
+
+const ProjectLiSubtitle = styled.p`
+  font-weight: 700;
+  margin-bottom: 8px;
+  margin-left: 10px;
+`;
+
+const ProjectText = styled.p`
+  margin-left: 28px;
+  margin-bottom: 20px;
+  line-height: 20px;
+`;
+
+=======
+>>>>>>> develop
 // const DialogCloseButton = styled(ButtonReset)`
 //   position: absolute;
 //   padding: 0;
