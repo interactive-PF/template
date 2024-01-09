@@ -50,10 +50,10 @@ const Image = styled.img`
   height: 100%;
 `;
 
-const AA = styled.div`
-  & > p > image {
-  }
-`;
+// const AA = styled.div`
+//   & > p > image {
+//   }
+// `;
 
 export default function About() {
   return (
